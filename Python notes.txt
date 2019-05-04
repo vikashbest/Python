@@ -1,0 +1,1858 @@
+	       	Python Bootcamp Zero to Hero 
+			     NOTES
+		--------------------------------------
+# Note that we follow following steps to open python in jupyter notebook in chrome
+    step 1: START->Anaconda Prompt
+    step 2: Type "jupyter notebook"     [without quotes]
+    step 3: Chrome will start automatically  
+
+
+1)  Use \n for new line, and \t for tab space.
+2)  Use *pwd* (without asteriks) to know current directory.
+
+#Strings
+---------------------------------------------------------
+1) Use len(string) function to get string length.
+2)  >>> s = 'welcome back'
+    >>> s[0]			        [It is indexing of strings]
+        result:- 'w'
+3)  >>> s[2:]
+        result:- 'lcome back'
+    >>> s[:3]
+        result:- 'wel'
+    >>> s[:-1]
+        result:- 'welcome bac'
+    >>> s[::2]                       [Changing stepsize to 2]
+        result:- 'wloebc'
+    >>> s[::-1]
+        result:- 'kcab emoclew'       [To Reverse the string] (Nice Trick)
+
+Note:- Strings are immutable. i.e. you cannot change the value after it is created.
+      Examples of immutable objects: { int,float,str(i.e. string),tuple,bool,unicode }
+      Examples of mutable objects : { list, set, dictionary }
+4)  >>> text = 'a'
+    >>> text*5
+        result:-  'aaaaa'
+5) String methods:-
+    >>> name = 'swami vivekanand'
+    >>> name.upper()                                                  [ Note that after using '.' symbol we press TAB Button to see all string
+                                                                         
+        result:- 'SWAMI VIVEKANAND'                                    methods for name,after selecting upper(in this e.g.) we press SHIFT+TAB to
+                                                                       know its definition and then provide values accordingly, if required ]
+
+    Similarly another string method, say split
+    >>> name.split()
+        result:- ['swami','vivekanand']                               [This method returns a list of strings separated by a separator, excluding 
+                                                                        the separator(blank space is default separator) ]
+    >>> name.split('a')
+        result:- ['sw', 'mi vivek', 'n', 'nd']                         [Here separator is 'a']
+
+# Print Formatting
+-------------------------------------------------------
+1)  >>> name = 'adam'
+    >>> print 'Name: %s' %(name)
+        result:- Name: adam
+    
+    >>> x = 12.23472
+    
+    >>> print 'it is also string %s' %(x)
+        result:- it is also string 12.23472
+
+    >>> print 'No. is : %s ' %str(x)
+        result:- No. is 12.23472
+
+2)  >>> x = 12.23472
+    >>> print 'floating point no. %1.2f' %(12.23472)
+        result:- floating point no. 12.23
+    
+    >>> print 'floating point no. %1.3f' %(x)
+        result:- floating point no. 12.235
+
+    >>> print 'convert to string %r' %(647)
+        result:- convert to string 647
+
+    >>> print 'first: %s, second: %s, third: %s' %('coder',12,34.675)
+        result:- first: coder, second: 12, third: 34.675
+
+3)  >>> print 'First: {a} Second: {b} Third: {a}'.format(a='back',b='to')
+        result:- First: back Second: to Third: back
+    
+    >>> print 'First: {} Second: {} Third: {}'.format(1,2,3)
+        result:- First: 1 Second: 2 Third: 3
+
+Note: In Python 3 we can use the same .format() method. Example given below:-
+    >>> print('key {x}'.format(x=12345))
+        result:- key 12345
+To write print function of Python 3 in Python 2 we need to first import print function:-
+    >>> from __future__ import print_fuction
+   And now executing the same statement!
+
+# Lists
+----------------------------------
+
+1)  >>> mylist=[1,'you',23.45,'skv']                    [Lists can hold different data types]
+    >>> mylist
+        result:- [1, 'you', 23.45, 'skv']
+
+    >>> len(mylist)
+        result:- 4
+
+    >>> mylist[0]
+        result:- 1                              [Note that it's returning value at index 0, but not as a list]
+
+2)  >>> mylist[1:]
+        result:- ['you', 23.45, 'skv']          [Note, here output is a list after slicing operation]
+
+3)  >>> mylist = mylist + ['best',24]
+    >>> mylist
+        result:- [1, 'you', 23.45, 'skv', 'best', 24]
+
+    >>> mylist.append('bye')
+    >>> mylist
+        result:- [1, 'you', 23.45, 'skv', 'best', 24, 'bye']
+
+4)  >>> mylist.pop()
+        result:- 'bye'
+    >>> mylist
+        result:- [1, 'you', 23.45, 'skv', 'best', 24]           ['bye' has been deleted, since its the last element ]
+
+    >>> x = mylist.pop(0)
+    >>> mylist
+        result:- ['you', 23.45, 'skv', 'best', 24]              [Note value at index 0 is deleted, also x = 1]
+
+5)  >>> list1 = [1,2,3]
+    >>> list1 * 4
+    >>> list1
+        result:- [1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3]           [Note that output is a single list containing elements of list1
+                                                                 4 times ]
+
+6)  >>> l= ['a','c','e','b','g','d']
+    >>> l.reverse()
+    >>> l
+        result:- ['d', 'g', 'b', 'e', 'c', 'a']
+    >>> l.sort()
+    >>> l
+        result:- ['a', 'b', 'c', 'd', 'e', 'g']
+
+7)  >>> l1 = [1,2,3]
+        l2 = [4,5,6]
+        l3 = [7,8,9]
+    >>> matrix = [l1,l2,l3]
+    >>> matrix
+        result:- [[1, 2, 3], [4, 5, 6], [7, 8, 9]]                 [This is Nesting of Lists]
+
+    >>> matrix[1]
+        result:- [4,5,6]
+    >>> matrix[1][0]
+        result:- 4
+
+8)  >>> first_col = [row[0] for row in matrix]
+    >>> first_col                                  [This is List Comprehension, detailed notes prpovided ahead]
+        result:- [1,4,7]                           [Grabs first element from each item in the list and forms another list]
+
+# Dictionaries
+-------------------------------------------------
+Note: Dictionaries are mappings in python. They are different in sequences because they don't retain any order.
+      So, we refer to the values within that dictionary through their keys.
+1)  >>> dict = {'k1':123,'k2':54.342,'k3':'programming'}
+    >>> dict['k1']
+        result:- 123
+    >>> dict['k3']
+        result:- 'programming'
+
+2)  >>> dict['k3'][1:7]
+        result:- 'rogram'
+    
+    >>> dict['k3'][1:7][::-1]                   
+        result:- 'margor'
+    
+    >>> dict['k3'][1:7][::-1].upper()                [We can apply many methods of string simultaneously directly like this]
+        result:- 'MARGOR'
+3)  >>> dict['k1']=dict['k1']+ 7
+    >>> dict
+        result:- {'k1': 130, 'k2': 54.342, 'k3': 'programming'}             [See value of k1 has changed to 130]
+
+4)  >>> d ={}
+    >>> d['fruit'] = 'Mango'
+        d['roll'] = 67
+    >>> d
+        result:- {'fruit': 'Mango', 'roll': 67}
+
+5) Nesting of dictionaries:-
+    >>> mydict = {'k1': {'nested': {'sub_nested': 108}}}
+    >>> mydict['k1']
+        result:- {'nested': {'sub_nested': 108}}
+
+    >>> mydict['k1']['nested']['sub_nested']
+        result:- 108
+    >>> mydict['k1']['nested']['sub_nested'] += 2
+    >>> mydict
+        result:- {'k1': {'nested': {'sub_nested': 110}}}            [See that value is changed to 110 after adding operation]
+6)  >>> d['k1'] = 10
+        d['k2'] = 20
+        d['k3'] = [30,40]
+    >>> d
+        result:- {'k1': 10, 'k2': 20, 'k3': [30,40]}
+
+    >>> d.keys()
+        result:- ['k3', 'k2', 'k1']                         [Note, it returns single LIST containing all keys]
+    >>> d.values()
+        result:- [[30,40], 20, 10]                               [Note, it returns single LIST containing all values ]
+    >>> d.items()
+        result:- [('k3', [30, 40]), ('k2', 20), ('k1', 10)]     [Note, it returns single LIST of 2-tuple, i.e. (key,value)]
+
+# Tuples
+---------------------------
+Note: Tuples are Immutable, i.e. values can't be changed once after it is created.
+      Tuples have only two methods, i.e. count() and index()
+1)  >>> t = (1,1,'two',1,34.656)
+    >>> t
+        result:- (1, 1, 'two', 1, 34.656)
+    >>> len(t)
+        result:- 5
+
+    >>> t[-1]
+        result:- 34.656
+
+    >>> t.index(1)
+        result:- 0                      [Note, this method returns the index of the input value present in the tuple. But, 
+                                        if there are multiple occurences of the value, then this method returns the first 
+                                         occuring index when the value is encountered.]
+    >>> t.index(34.656)
+        result:- 4
+
+    >>> t.count(1)                      [Note, this method returns the no. of occurences of a value in a tuple.]
+        result:- 3
+
+    >>> t1 = (1,2,3,4)
+    >>> t[1]
+        result:- 2
+    >>> t1[1] = 8
+        result:- TypeError: 'tuple' doesn't support item assignment.        [Since tuple is immutable.]
+
+# Files
+------------------------------------
+
+Note: Create a textfile in same directory where jupyter notebooks are.
+      To check the directory, execute 'pwd' statement. (pwd - print working directory)
+
+      We have created a testfile.txt in the directory and contents of the file are:-
+      This is first line.
+      this is second line.
+      and finally Vikash Rocks !!
+
+1)  >>> f = open('testfile.txt')
+    >>> f.read()                        [This method reads the whole document at once.]
+        result:- 'This is first line.\nthis is second line.\nand finally Vikash Rocks !!'
+    >>> f.read()
+        result:- ''                         [Actually the cursor reaches the end of the file.So, no contents available]
+    >>> f.seek(0)                           [To place the cursor at starting position, i.e. index 0]
+    >>> f.read()
+        result:- 'This is first line.\nthis is second line.\nand finally Vikash Rocks !!'
+
+2)  >>> f.readlines()
+        result:- ['This is first line.\n',
+                  'this is second line.\n',                     [This method returns single LIST containing all the lines
+                  'and finally Vikash Rocks !!']                   where each line is considered as an element of the List.]
+
+
+3)  >>> f.readline()                                
+        result:- 'This is first line.\n'            [This method returns single line at at time as a string.]
+    >>> f.readline()
+        result:- 'this is second line.\n'
+    >>> f.readline()
+        result:- 'and finally Vikash Rocks !!'
+    >>> f.readline()
+        result:- ''
+
+4)* Creating and writing file (without using notepad or sublime text editor, etc.)
+    Note: It works for jupyter notebook only.
+
+    >>> %%writefile magicfile.txt
+        First line
+        Second line
+        Third Line
+        Vikash Rocking again !!
+
+        result:- Writing magicfile.txt
+
+    >>> for i in open('magicfile.txt'):
+            print i
+
+        result:- First line
+
+                Second line
+
+                Third Line
+
+                Vikash Rocking again !!
+
+Note: This technique can also be used to read contents of 'testfile.txt' similarly.
+
+    >>> for i in open('testfile.txt'):
+            print i
+
+        result:- This is first line.
+
+                this is second line.
+
+                and finally Vikash Rocks !!
+
+5)  >>> f.close()                       [To close the opened file.]
+
+# Sets
+----------------------
+
+1)  >>> x = set()
+    >>> x
+        result:- set()        
+
+    >>> x.add(1)
+    >>> x
+        result:- {1}                        [Note that output looks like a dictionary because of {} braces, but it's not]
+    >>> x.add(2)
+    >>> x
+        result:- {1,2}
+
+    >>> x.add(1)                            [Now trying to again add 1 as an element]
+    >>> x
+        result:- {1,2}                      [Note, here 1 is not repeated twice in set]
+
+2)  >>> l = [1,1,1,5,5,2,5,2,7,7,2]
+    >>> set(l)
+        result:- {1,2,5,7}
+
+# Boolean and None
+--------------------------
+
+1)  >>> x = True
+    >>> x
+        result:- True
+
+2)  >>> 3 > 7
+        result:- False
+    >>> 12 > 4
+        result:- True
+
+3)  >>> caste = None
+    >>> caste
+        result:-                        [Output is nothing]
+
+    >>> caste = 'general'
+    >>> caste
+        result:- 'general'
+
+# Comparison operators
+-------------------------------
+ Note: All basic operators are same for python as for C, Java, etc.
+
+1)  '<>' is same as '!='        [Both are not equal operators.]
+
+# Chained comparison operartors
+----------------------------------------
+
+1)  >>> 1 < 2 < 3                               
+        return:- True
+2)  >>> 1 < 2 and 2 < 3                     [When using 'and' operator, all conditions must be true for the output to be True]
+        result:- True                       [Both 1) and 2) are same]
+
+3)  >>> 1 < 2 > 3
+        result:- False
+
+4)  >>> 2==4 or 4>3
+        result:- True                       [When using 'or' operator if any condition gets true, then result will be True]
+
+# if elif else statements
+-------------------------------------------
+
+1)  >>> if True:
+           print 'it is true'
+
+        result:- it is true
+
+2)  >>> x = False
+        if x:
+           print 'x was True'
+        else:
+           print 'print when x is anything but not True'
+
+        result:- print when x is anything but not True
+
+3)  >>> num = 5
+        if num == 2:
+           print 'No. is 2'
+        elif num == 5:
+           print 'No. is 5'
+        else:
+           print 'which number?' 
+
+        result:- No. is 5
+
+# for loop
+-----------------------------------
+
+1)  >>> l = [2,3,4,5,6,7]
+    >>> for i in l:
+           print i                          [Note, we can use anything instead of 'i' for our convenience]
+
+        result:- 2
+                 3   
+                 4
+                 5
+                 6
+                 7
+
+2)  >>> for num in l:
+           print 'Number is ' + str(num)                  [Note here, str() function is called to parse number(i.e. int) to
+                                                            string, so that we can concatenate both strings]
+
+        result:- Number is 2
+                 Number is 3
+                 Number is 4
+                 Number is 5
+                 Number is 6
+                 Number is 7
+
+3)  >>> total_sum = 0
+
+        for num in l:
+           total_sum += num
+    
+        print total_sum
+
+        result:- 27
+
+4)  >>> words = 'Python is Awesome'
+        
+        for i in words:
+           print i
+
+        result:- P
+                 y
+                 t
+                 h
+                 o
+                 n
+
+                 i
+                 s
+
+                 A
+                 w
+                 e
+                 s
+                 o
+                 m
+                 e
+
+5)  >>> tup = (1,2,3,4,5)
+        
+        for item in tup:
+           print item
+
+        result:- 1
+                 2
+                 3
+                 4
+                 5
+
+6)  >>> l = [(1,2),(3,4),(5,6),(7,8)]
+    >>> for tup in l:
+           print tup
+
+        result:- (1, 2)
+                 (3, 4)
+                 (5, 6)
+                 (7, 8)
+
+    >>> for (n1,n2) in l:
+           print n1+n2
+
+        result:- 3
+                 7
+                 11
+                 15
+
+7)  >>> d = {'k1':1,'k2':2,'k3':3}
+    >>> for item in d:
+           print item
+
+        result:- k3
+                 k2                             [Note, here we didn't get both keys and associted values]
+                 k1                             [For getting both keys and values, there is a method of dictionary 
+                                                 called iteritems() ]
+
+8)  >>> for item in d.iteritems():
+           print item
+
+        result:- ('k3', 3)                   [Note, in Python 3 there is a method of dictionary called items(), it is  
+                 ('k2', 2)                    same as iteritems() method in Python 2, but has some extra benefits. ]
+                 ('k1', 1)
+
+                 OR (without getting output in form of tuples, see below)
+    
+    >>> for key,value in d.iteritems():
+           print key,value
+
+        result:- k3 3                       
+                 k2 2                        
+                 k1 1
+
+# while loop
+------------------------------------
+
+1)  >>> x = 0
+        while x < 10:
+           print 'Number is: ',x
+           x+=1
+        else:
+           print 'Counting done!'
+
+    result:- Number is:  0
+             Number is:  1
+             Number is:  2
+             Number is:  3
+             Number is:  4
+             Number is:  5
+             Number is:  6
+             Number is:  7
+             Number is:  8
+             Number is:  9
+             Counting done!
+
+2) Use of break, continue and pass :-
+
+    >>> for element in a:
+           print 'element is: ',element
+           if element == 3:
+              print 'In if condition of element 3'
+              print 'passing now...'
+              pass                                          [Note, pass statement does nothing, next statement will be executed after pass]
+              print 'passed!'
+        
+           if element == 5:
+              print 'In if condition of element  5'
+              print 'continuing'
+              continue                                      [Use of continue - takes the control to the top of the closest enclosing loop.]
+              print 'continued already. This statement will not be printed !'
+        
+    
+           if element == 6:
+              print 'In if condition of element  6'
+              print 'breaking now !'
+              break                                         [break statement helps to come out of the current enclosing loop.]
+              print 'break already used !'
+    
+           print 'last line of code !'
+
+
+
+    result:- element is:  1
+             last line of code !
+             element is:  2
+             last line of code !
+             element is:  3
+             In if condition of element 3
+             passing now...
+             passed!
+             last line of code !
+             element is:  4
+             last line of code !
+             element is:  5
+             In if condition of element  5
+             continuing
+             element is:  6
+             In if condition of element  6
+             breaking now !
+
+
+# range and xrange
+----------------------------------- 
+
+1)  >>> range(10)
+    
+    result:- [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+    >>> range(1,10)
+
+    result:- [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+    >>> range(1,10,2)
+
+    result:- [1, 3, 5, 7, 9]
+
+2)  >>> x = range(11)
+    >>> x
+
+    result:- [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+    >>> type(x)
+
+    result:- list
+
+3)  >>> for num in xrange(1,7):
+           print num
+
+    result:- 1
+             2
+             3                              [Note, the result is same by using xrange() in place of range() .But there is a 
+             4                               small difference.In python 2, range() produces list and save it in memory but 
+             5                               xrange() does not save it in memory it just generate ! So if we provide a large   
+             6                               value in range(), memory will get full thus creating problem.   
+
+                                             So, it is preferable to use xrange() in python 2 for loops. In python 3 there is 
+                                             no problem in using range().
+
+4)  >>> y = xrange(1,9)
+    >>> y
+
+    result:- xrange(1,9)
+
+    >>> type(y)
+
+    result:- xrange
+
+    >>> list(y)
+
+    result:- [1, 2, 3, 4, 5, 6, 7, 8]
+
+5)  >>> x = range(1,8)
+    >>> y = xrange(1,8)
+
+    >>> x == y
+    result:- False
+
+    >>> x == list(y)
+    result:- True
+    
+# List Comprehensions
+-------------------------------------
+
+1)  >>> l =[]
+        for element in 'Python':
+           l.append(element)
+        
+        print l
+
+    result:- ['P', 'y', 't', 'h', 'o', 'n']
+
+This same result can be obtained using list comprehension. See below:-
+
+    >>> list2 = [element for element in 'Python']
+    >>> list2
+
+    result:-  ['P', 'y', 't', 'h', 'o', 'n']
+
+2)  >>> list2 = [element*2 for element in 'Python']
+    >>> list2
+
+    result:- ['PP', 'yy', 'tt', 'hh', 'oo', 'nn']
+
+3)  >>> list3 = [x**2 for x in xrange(1,11)]                    [Note, we may have used range() here.]
+    >>> list3
+    
+    result:- [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+
+4)  >>> evenlist = [number for number in range(11) if number % 2 == 0]                  [Using if statement here.]
+    >>> evenlilst
+
+    result:- [0, 2, 4, 6, 8, 10]
+
+5) Example of converting list of celsius into fahrenheit :-
+
+    >>> celsius = [0, 13.5, 45, 25, 100]
+    >>> fahrenheit = [(temp*(9/5.0) +32) for temp in celsius]               [Note, here choose either 5.0 or 9.0 to make it a 
+                                                                             floating point number, otherwise wrong results.]
+    >>> fahrenheit
+
+    result:- [32.0, 56.3, 113.0, 77.0, 212.0]
+
+6) Nesting of List comprehension :-
+
+    >>> lst = [x**2 for x in [x**2 for x in range(1,11)]]          [Nte, here this statement will finally produce x**4 ]
+    >>> lst
+
+    result:- [1, 16, 81, 256, 625, 1296, 2401, 4096, 6561, 10000]
+
+
+# functions
+---------------------------------------------
+
+1)  >>> def welcome():                                              [Example of function without any arguments ]
+           print 'Welcome Python programmers'
+    >>> welcome()
+
+    result:- Welcome Python programmers
+
+
+2)  >>> def my_add_func(num1,num2):                                 [Example of function with arguments.]
+           
+           '''
+           This funcion returns the SUM of two given inputs.            [Note, for writing docstring, use multi-line comments,i.e. '''  ''' at 
+           It's a docstring, it is displayed when help() is called       the beginning after defining function.]
+           or to know details of the function. 
+           '''
+           
+           print 'Sum is:',(num1 + num2)
+
+    >>> my_add_func(2,7)
+
+    result:- Sum is: 9
+
+3) Now we will see the use of return statement :-
+
+    >>> def mul_num(num1,num2):
+           return num1*num2
+
+    >>> res = mul_num(3,5)
+    >>> res
+
+    result:- 15
+
+    >>> print mul_num(4,5)
+
+    result:- 20
+
+4) Example of a function to check a number is Prime or not :-
+
+    >>> def is_prime(num):
+           '''
+           INPUT: A number
+           OUTPUT: A print statement whether a number is prime or not.
+           '''
+           for i in range(2,num):
+              if num % i == 0:
+                 print 'Not prime'
+                 break
+           else:
+              print "Prime"
+
+    >>> is_prime(23)
+    
+    result:- Prime
+
+    >>> is_prime(10)
+
+    result:- Not prime
+
+
+                [Note, there are better methods of checking Prime numbers. A better program is written below.]
+
+    >>> import math
+
+        def is_prime(num):
+           '''
+           Better method for checking Prime number.
+           '''
+           if num % 2 == 0 and num > 2:
+              return 'Not Prime'
+           for i in range(3,int(math.sqrt(num)) + 1, 2):               [Note, this program has efficient time complexity tha previous one.]
+              if num % i == 0:
+                 return 'Not Prime'
+           
+           return 'Prime'
+
+    >>> is_prime(12)
+
+    result:- 'Not Prime'
+
+    >>> is_prime(23)
+
+    result:- 'Prime'
+
+
+# lambda expression
+-------------------------------------
+Note:lambda expression is a single line statement.
+     lambda expression is designed for coding simple functions, and def handles the larger tasks.
+
+1)  >>> def square(num):                                [It's a normal function created using def ]
+           return num**2
+
+    >>> square(4)
+
+    result:- 16
+
+2)  >>> def square2(num): return num**2                 [Note, a small function may be designed in this way too!]
+    >>> square2(6)
+
+    result:- 36
+
+Now comes our lambda expression:-
+
+3)  >>> lambda num: num**2
+    result:- <function __main__.<lambda>>
+
+    >>> square3 = lambda num: num**2                [ For now, using lambda expression, we need to store it in a variable.
+    >>>square3(8)                                     Later we will use it in conjunction with map(),filter(),reduce(), etc. ]
+
+    result:- 64
+
+    >>> rev = lambda s: s[::-1]
+    >>> rev('programmer')
+
+    result:- 'remmargorp'
+
+4) For more than 1 arguments:- 
+
+    >>> add = lambda n1,n2: n1+n2
+    >>> add(3,7)
+
+    result:- 10
+
+
+# Nested Statements and scope
+--------------------------------------------
+
+1)  >>> x = 25
+
+        def printer():
+           x = 50
+           return x
+        print x
+        print printer()
+
+    result:- 25
+             50
+
+2)  >>> name = 'This is a global name'
+        def greet():
+           name = 'Bran'
+    
+           def hello():
+              print 'hello '+ name
+        
+           hello()
+        greet()
+
+
+    result:- hello Bran
+
+3)  >>> x = 50
+
+        def func():
+           global x
+           print 'This function is now using the global x !'
+           print 'Because of global, x is:', x
+           x = 2
+           print 'Ran func(), changed global x to', x
+        print 'Before calling func(), x is:', x
+        func()
+        print 'Value of x (outside of func()) is:', x
+
+    result:- Before calling func(), x is: 50
+             This function is now using the global x !
+             Because of global, x is: 50
+             Ran func(), changed global x to 2
+             Value of x (outside of func()) is: 2
+
+4) Note:- We can use globals() and locals() function to check what are our current local and global variables !
+
+
+# Object Oriented Programming (OOP) 
+----------------------------------------------------
+
+1)  >>> print type(7)
+        print type(3.567)
+        print type('Name')
+        print type([])
+        print type(())
+        print type({})
+        print type(range)
+        print type(raw_input)
+        print type(input)
+
+    result:- <type 'int'>
+             <type 'float'>
+             <type 'str'>
+             <type 'list'>
+             <type 'tuple'>
+             <type 'dict'>
+             <type 'builtin_function_or_method'>
+             <type 'instancemethod'>
+             <type 'function'>
+
+2) Create a new object type called Sample
+    >>> class Sample(object):
+           pass
+    >>> x = Sample()
+    >>> type(x)
+
+    result:- <class '__main__.Sample'>
+
+Note:-i) The syntax for creating an attribute is: 
+
+            self.attribute = something
+
+      ii) A special method called __init__() is used to initialize the attributes of an object.
+
+    >>> class Dog(object):
+           def __init__(self,breed):                        [Note, use 'self' always though it is a convention, followed by arguments.]
+              self.breed = breed
+
+        vivek = Dog(breed = 'Bulldog')
+        arun = Dog(breed = 'German Shepherd') 
+
+    >>> vivek.breed
+    
+    result:- 'Bulldog'
+
+    >>> arun.breed
+
+    result:- 'German Shepherd'
+
+    >>> class Dog(object):
+           # Class object attribute....place it before __init__ function
+           species = 'mammal'
+    
+           def __init__(self,breed,name):
+              self.breed2 = breed                               [Note, breed2 and name2 are the names of the attributes]
+              self.name2 = name
+
+    >>> vicky = Dog(breed = 'Husky', name = 'Sheru')
+    >>> vicky.species
+
+    result:- 'mammal'
+
+    >>> vicky.breed2
+
+    result:- 'Husky'
+
+    >>> vicky.name2
+
+    result:- 'Sheru'
+
+3)  >>> class Circle(object):
+        # class object attribute
+        pi = 3.14
+    
+        def __init__(self,radius = 1):
+           self.radius = radius
+
+    >>> c = Circle(radius = 10)
+    >>> c.radius
+
+    result:- 10
+
+Now including some more methods in the Circle class:-
+
+    >>> class Circle(object):
+        # class object attribute
+        pi = 3.14
+    
+        def __init__(self,radius = 1):
+           self.radius = radius
+        
+        def area(self):
+           return Circle.pi*(self.radius**2)
+    
+        def set_radius(self,new_radius):
+           '''This method set the new radius of the circle'''
+           self.radius = new_radius
+    
+        def perimeter(self):
+           return 2*Circle.pi*self.radius
+
+    >>> c = Circle()
+    >>> c.set_radius(10)
+    >>> c.area()
+
+    result:- 314.0
+
+    >>> c.perimeter()
+
+    result:- 62.8
+
+
+# Inheritece
+--------------------------------
+
+1)  >>> class Animal(object):
+            
+           def __init__(self):
+              print 'Animal Created'
+        
+           def whoamI(self):
+              print "Animal"
+    
+           def eat(self):
+              print "Eating"
+
+
+    >>> class Dog(Animal):                             [Note, Here we are writing Animal(i.e. the Base class) to make Dog class it's 
+                                                        derived class ]    
+           def __init__(self):
+              Animal.__init__(self)
+              print 'Dog Created'
+        
+           def whoamI(self):
+              print 'Dog'
+        
+           def bark(self):
+              print 'woof!'
+
+
+    >>> d = Dog()
+
+    result:- Animal Created
+             Dog Created
+
+    >>> d.whoamI()
+
+    result:- Dog
+
+    >>> d.eat()                         [ Note, eat() is a method of Animal class, but since Dog class is inherited from Animal class
+                                          therefore, all the properties of Animal class can be used in Dog class ] 
+    result:- Eating
+
+    >>> d.bark()
+
+    result:- woof!
+
+
+# Special methods 
+-----------------------------------
+
+1)  >>> class Book(object):
+    
+           def __init__(self,title,author,pages):
+              print 'A book has been created !'
+           
+              self.title = title
+              self.author = author
+              self.pages = pages
+
+    >>> b = Book('Pyhton','Aaron',200)
+
+    result:- A book has been created !
+
+    >>> print b
+
+    result:- <__main__.Book object at 0x00000000062199E8>       [Notice, it prints the definition of b ,i.e. what actually 'b' is.] 
+                                                                 Also it shows the memory location where it is stored.
+
+So there is a Special function __str__() to help you show the information that you want. See below it's implementation :-
+
+    >>> class Book(object):
+    
+           def __init__(self,title,author,pages):
+              print 'A book has been created !'
+        
+              self.title = title
+              self.author = author
+              self.pages = pages
+        
+           def __str__(self):
+              return ' Title: %s\n Author: %s\n Pages: %s ' %(self.title,self.author,self.pages)
+
+    >>> b = Book('Python','Aaron',200)
+
+    result:- A book has been created !
+
+    >>> print b
+
+    result:-  Title: Python
+              Author: Aaron
+              Pages: 200 
+
+Now another special fuction __len__() , let's check it out !
+
+    >>> class Book(object):
+    
+           def __init__(self,title,author,pages):
+              print 'A book has been created !'
+        
+              self.title = title
+              self.author = author
+              self.pages = pages
+        
+           def __str__(self):
+              return ' Title: %s\n Author: %s\n Pages: %s ' %(self.title,self.author,self.pages)
+    
+           def __len__(self):
+              return self.pages
+
+    >>> b2 = Book('Python Advanced','Philip',700)
+    result:- A book has been created !
+
+    >>> print b2
+    result:-  Title: Python Advanced
+              Author: Philip
+              Pages: 700 
+
+    >>> len(b2)
+
+    result:- 700
+
+Another Special function is __del__() , let's check it out :-
+
+    >>> class Book(object):
+    
+           def __init__(self,title,author,pages):
+              print 'A book has been created !'
+        
+              self.title = title
+              self.author = author
+              self.pages = pages
+        
+           def __str__(self):
+              return ' Title: %s\n Author: %s\n Pages: %s ' %(self.title,self.author,self.pages)
+
+           def __del__(self):
+              print '%s Book has been removed !' %(self.title)
+
+    >>> b3 = Book('Java','Robert',500)
+
+    result:- A book has been created !
+
+    >>> print b3
+
+    result:-  Title: Java
+              Author: Robert
+              Pages: 500 
+
+    >>> del(b3)
+
+    result:- Java Book has been removed !
+
+    >>> print b3
+
+    result:- NameError: 'b3' is not defined
+
+    
+
+# try, except, else, finally
+--------------------------------------------------
+Note:- finally block will execute whatever the condition maybe.
+    >>> try:
+           3 + 'f'
+        except TypeError:                           [Note, we can specify type of error]
+           print 'there was a type error'
+        finally:
+           print 'this is finally printed'
+
+    result:- there was a type error
+             this is finally printed
+
+    >>> try:
+           3 + 'f'
+        except:                                 [Note, no need to mention type of error generally]
+           print 'there was an error'
+
+    result:- there was an error
+
+    >>> try:
+           f = open('testfile','w')             [Note, we have used 'w' i.e. writable]
+           f.write('we write in this file')
+        except:
+           print 'Error in writing file'
+        else:
+           print 'File write was a success'   
+
+    result:- File write was a success
+
+    >>> try:
+           f = open('testfile','r')             [Note, here it is 'r' for readable only]
+           f.write('we write in this file')
+        except:
+           print 'Error in writing file'
+        else:
+           print 'File write was a success'     
+
+    result:- Error in writing file             [Error because we are trying to write a readable only file, that's why except block executed]
+
+
+
+    >>> def askint():
+           while True:
+              try:
+                 val = int(raw_input('Please enter an Integer: '))
+              except:
+                 print "You didn't enter an integer"
+                 continue
+              else:
+                 print 'Correct! well done'
+                 break
+              finally:
+                 print 'Finally block executed'
+            
+           print val
+
+
+    >>> askint()
+    result:- Please enter an Integer: two
+             You didn't enter an integer
+             Finally block executed
+             Please enter an Integer: seven
+             You didn't enter an integer
+             Finally block executed
+             Please enter an Integer: 7
+             Correct! well done
+             Finally block executed
+             7
+
+
+Modules, packages, imports
+-------------------------------------------
+
+1)  >>> import math
+     
+    >>> math.sqrt(16)
+    result:- 4.0
+
+2)  >>> from math import sqrt
+
+    >>> sqrt(25)
+    result:- 5.0
+    
+To install a module :-
+    
+    >>> conda install *module name*
+                                                    [Note:First use conda, if not found then use pip. although pip is preferred one.]
+    >>> pip install *module name*
+
+
+Built-in function
+----------------------------------------
+
+1) map() :- It takes two arguments, i.e. map(function,sequence). Eg. of sequence- list, tuple etc.
+            It returns a LIST with the function applied on each elements of the sequence.
+    
+    >>> temp = [0,25,37,100]
+    >>> map(lambda t: (9.0/5)*t + 32, temp)
+
+    result:- [32.0, 77.0, 98.60000000000001, 212.0]
+
+    >>> a = [1,2,3]
+        b = [4,5,6]
+        c = [7,8,9]
+
+    >>> map(lambda x,y,z: x+y+z , a,b,c)   
+
+    result:- [12, 15, 18]
+
+    >>> map(lambda num: num**2 , (1,2,3,4,5))
+
+    result:- [1, 4, 9, 16, 25]                              [map() function returns a LIST]
+
+
+2) reduce():- The function reduce(function,sequence) continually applies function to the sequence and then returns a single value.
+              It takes first two values of sequence then applies function to it to get a result, and then function is applied to result
+              and third value, and the process goes on untill a final single value is obtained
+
+    >>> lst = [23,654,1,54,67,86,334,86]
+    >>> max_find = reduce(lambda x,y:x if(x>y) else y,lst)
+    >>> max_find
+    result:- 654
+
+    >>> total = reduce(lambda a,b:a+b, lst)
+    >>> total
+    result:- 1305
+
+3) filter():- The function filter(function,list) filters out all the elements of an iterable, for which the function returns True.
+              The returned value is a list.
+    >>> def is_even(num):
+           return(num % 2 == 0)
+    
+    >>> lst = range(11)
+
+    >>> filter(is_even,lst)
+    result:- [0, 2, 4, 6, 8, 10]
+
+        OR we can use lambda expression
+
+    >>> filter(lambda x: (x % 2 == 0), lst)
+
+    result:- [0, 2, 4, 6, 8, 10]
+
+    To find numbers greater than 3
+    >>> filter(lambda x: x>3 , lst)                     [Note : It also works with tuple i.e. it needs only sequence.]
+
+    result:- [4, 5, 6, 7, 8, 9, 10]
+
+4) zip():- It collects elements from each of the iterables, and returns an iterator of tuples.
+
+    >>> x = [1,2,3]
+        y = [4,52,6]
+        z = [7,8]
+
+    >>> zip(x,y)
+    
+    result:- [(1, 4), (2, 52), (3, 6)]
+    
+    >>> zip(x,z)
+
+    result:- [(1, 7), (2, 8)]
+
+    >>> zip(x,y,z)
+
+    result:- [(1, 4, 7), (2, 52, 8)]
+
+    >>> a = [3,6,4,8,6,1]
+        b = [4,1,4,7,8,3]
+    >>> for pair in zip(a,b):
+           print max(pair)
+
+    result:- 4
+             6
+             4
+             8
+             8
+             3
+        Same thing can be done using lambda expression
+
+    >>> map(lambda pair:max(pair), zip(a,b))                    [Note:- we have used map() here alongwith zip()]
+
+    result:- [4, 6, 4, 8, 8, 3]
+
+    >>> d1 = {'a':1,'b':2}
+        d2 = {'c':3,'d':4}
+    >>> zip(d1,d2)
+
+    result:- [('a', 'c'), ('b', 'd')]
+
+    >>> def switchdict(d1,d2):
+           dout = {}
+           for d1key,d2val in zip(d1,d2.itervalues()):
+              dout[d1key] = d2val
+    
+           return dout
+
+    >>> switchdict(d1,d2)
+
+    result:- {'a': 3, 'b': 4}
+
+    >>> d1
+
+    result:- {'a': 1, 'b': 2}
+
+    >>> zip()                           [Note, without any arguments it returns an empty list]
+
+    result:- []
+
+5) enumerate():- It allows you to  keep a count as you iterate through an object. It does this by returning a tuple in the form (count,element).
+
+    >>> list1 = ['a','b','c','d']
+    >>> for i,item in enumerate(list1):
+           print (i,item)
+
+    result:- (0, 'a')
+             (1, 'b')
+             (2, 'c')
+             (3, 'd')
+
+    >>> for i,item in enumerate(list1):
+           print i,item
+
+    result:- 0 a
+             1 b
+             2 c
+             3 d
+
+    >>> for count,item in enumerate(list1):
+           if count >= 2:
+              print count,item
+
+    result:- 2 c
+             3 d
+
+6) all() and any():- all(iterable) will return True if all elements of the iterable are True, otherwise False.
+                     any(iterable) will return True if any of the element in the iterable is True, otherwise False.
+
+    >>> bool_list = [True,True,False,True]
+    >>> all(bool_list)
+
+    result:- False
+
+    >>> any(bool_list)
+
+    result:- True
+
+7) complex():- There are two ways to write a complex no.
+
+    >>> complex(3,7)                            [Note: First argument should be Real no. and second argument should be imaginary part]
+
+    result:- (3+7j)
+
+    >>> complex('5+3j')                         [This is second way. We can pass the complex no. as a single string]
+
+    result:- (5+3j)
+
+    >>> complex('4+6g')
+
+    result:- ValueError: complex() arg is a malformed string.           [Note: Only 'j' can be used as an imaginary part, not other like 'g']
+
+
+# Decorators
+------------------------------------------------------
+Note: Decorators can be thought of as functions which modify the functionality of another function. They help to make code shorter.
+
+**Function returning Functions :-
+    
+    >>> def hello(name = 'PC User'):
+           def greet():
+              return '\t This is inside the greet() function'
+           def welcome():
+              return '\t This is inside welcome() function'
+           if name == 'PC User':
+              return greet
+           else:
+              return welcome
+
+    >>> x = hello()
+    >>> x
+    result:- <function __main__.greet>
+    >>>  print x()
+    result:-    This is inside the greet() function                 [Note, there is a tab space,i.e. \t at the beginning of output]
+
+    >>> y = hello('Vikash')
+    >>> print y()
+    result:-     This is inside welcome() function                  [Note, there is a tab space,i.e. \t at the beginning of output]
+
+**Function as arguments
+
+    >>> def hello():
+           return 'Hi User!'
+
+    >>> def other(func):
+           print 'We are inside other(func) function'
+           print func()
+
+    >>> other(hello)
+
+    result:- We are inside other(func) function
+             Hi User!
+
+             Now Comes decorators
+        ------------------------------
+
+    >>> def new_decorator(func):
+    
+           def wrap_func():
+              print 'Code here, before executing func'
+        
+              func()
+        
+              print 'Code here, after executing func()'
+           return wrap_func
+
+    >>> def func_needs_decorator():
+           print 'This function needs a decorator!'
+
+    >>> func_needs_decorator = new_decorator(func_needs_decorator)   --------------------(1)
+    >>> func_needs_decorator()
+
+    result:- Code here, before executing func
+             This function needs a decorator!
+             Code here, after executing func()
+
+
+        OR we can use @ symbol for doing same thing(it's easy)-------------[in place of (1)]
+
+    >>> @new_decorator
+        def func_needs_decorator():
+           print 'This function needs Decorator'
+
+    >>> func_needs_decorator()
+    result:- [Same result as above]
+
+# Iterators and Generators
+------------------------------------------------
+ A generator is simply a function which returns an object on which you can call next, such that for every call it returns some value, 
+ until it raises a StopIteration exception, signaling that all values have been generated. Such an object is called an iterator.
+
+1)  >>> def gencubes(n):
+           for num in range(n):
+              yield num**3                              [Note, we have used 'yield',that's why it's a generator]
+    
+    >>> gencubes(10)
+    result:- <generator object gencubes at 0x00000000072A4FC0>
+
+    >>> for i in gencubes(10):
+           print i
+
+    result:- 0
+             1
+             8
+             27
+             64
+             125
+             216
+             343
+             512
+             729
+
+2)  >>> def genfibon(n):
+           a = 0
+           b = 1                                [Note, it's a Fibonacci series generator]
+    
+           for i in range(n):
+              yield a
+              a,b = b,a+b
+
+    >>> for num in genfibon(10):
+           print num
+
+    result:- 0
+             1
+             1
+             2
+             3
+             5
+             8
+             13
+             21
+             34
+
+3)  >>> def simple_gen():
+           for x in range(3):
+              yield x     
+    >>> g = simple_gen()
+    
+    >>> print next(g)
+    result:- 0
+
+    >>> print next(g)
+    result:- 1
+
+    >>> print next(g)
+    result:- 2
+
+    >>> print next(g)
+    result:- StopIteration Exception
+
+4)  >>> s = 'Boy'
+
+    >>> s_iter = iter(s)
+
+    >>> next(s_iter)
+    result:- 'B'
+
+    >>> next(s_iter)
+    result:- 'o'
+
+    >>> next(s_iter)
+    result:- 'y'
+
+    >>> next(s_iter)
+    result:- StopIteration Exception
+
+5) Something Extra:-
+    
+    >>> import itertools
+    
+    >>> chairs = [1,2,3]
+        print list(itertools.permutations(chairs))              [Permutation of all elements of chairs]
+
+    result:- [(1, 2, 3), (1, 3, 2), (2, 1, 3), (2, 3, 1), (3, 1, 2), (3, 2, 1)]
+
+    >>> print list(itertools.combinations(chairs,2))            [Combination, selecting 2 elements at a time from chairs]
+
+    result:- [(1, 2), (1, 3), (2, 3)]
+
+
+# collections module various functions(e.g. Counter, defaultdict, OrderedDict, namedtuple)
+---------------------------------------------------------------------------------------------------
+
+1) Counter
+
+    >>> from collections import counter                     [import statement here]
+
+    >>> l = [1,1,1,1,2,2,2,2,55,4,55,7,6,6,6,]
+        Counter(l)
+
+    result:- Counter({1: 4, 2: 4, 4: 1, 6: 3, 7: 1, 55: 2})
+
+    >>> s = 'vveggeeasasdbabdsvsvasv'
+        Counter(s)
+
+    result:- Counter({'a': 4, 'b': 2, 'd': 2, 'e': 3, 'g': 2, 's': 5, 'v': 5})
+
+    >>> w = 'This is is a really nice place. It is must visit place.'
+    >>> words = w.split()
+        Counter(words)
+
+    result:- Counter({'It': 1,
+                      'This': 1,
+                      'a': 1,
+                      'is': 3,
+                      'must': 1,
+                      'nice': 1,
+                      'place.': 2,
+                      'really': 1,
+                      'visit': 1})
+
+    >>> c = Counter(words)
+    
+    >>> c.most_common(2)
+
+        result:- [('is', 3), ('place.', 2)]
+
+    >>> sum(c.values())                         [Note, it returns the total no. of words]
+
+        result:- 12
+
+    >>> set(c)
+
+        result:- {'It', 'This', 'a', 'is', 'must', 'nice', 'place.', 'really', 'visit'}
+
+    >>> c.items()
+
+            result:- [('a', 1),
+                      ('This', 1),
+                      ('is', 3),
+                      ('visit', 1),
+                      ('It', 1),
+                      ('must', 1),
+                      ('place.', 2),
+                      ('really', 1),
+                      ('nice', 1)]
+
+    >>> c.most_common()[:-4:-1]
+
+        result:- [('nice', 1), ('really', 1), ('must', 1)]
+
+    >>> dict(c)
+
+        result:- {'It': 1,
+                  'This': 1,
+                  'a': 1,
+                  'is': 3,
+                  'must': 1,
+                  'nice': 1,
+                  'place.': 2,
+                  'really': 1,
+                  'visit': 1}
+
+
+2) defaultdict
+
+    >>> from collections import defaultdict                 [import statement here]
+
+    >>> d = {'k1':5}
+    >>> d['k1']
+
+        result:- 5
+
+    >>> d['k2']
+
+        result:- KeyError: 'k2'                     [Note, normal dictionary works like this, it gives an error.]
+
+                            Example 1:- 
+
+    >>> d = defaultdict(object)                     
+
+    >>> d['one']
+
+        result:- <object at 0x6cf07b0>
+
+    >>> for item in d:
+           print item 
+
+        result:- one
+
+                            Example 2:-
+
+    >>> d = defaultdict(lambda:'nil')                   
+    >>> d['one']
+
+        result:- 'nil'
+
+    >>> d['two']
+
+        result:- 'nil'
+
+    >>> d['three'] = 3
+
+    >>> d
+
+        result:- defaultdict(<function __main__.<lambda>>,
+            {'one': 'nil', 'three': 3, 'two': 'nil'})
+
+    >>> d.items()
+
+        result:- [('three', 3), ('two', 'nil'), ('one', 'nil')]
+
+3) OrderedDict
+
+    >>> d ={}
+    >>> d['a'] = 1
+        d['b'] = 2
+        d['c'] = 3
+        d['d'] = 4
+        d['e'] = 5
+
+    >>> for k,v in d.items():
+           print k,v
+
+        result:- a 1
+                 c 3
+                 b 2
+                 e 5
+                 d 4
+
+    >>> from collections import OrderedDict                 [import statement here]
+
+    >>> d = OrderedDict()
+
+    >>> d['a'] = 1
+        d['b'] = 2
+        d['c'] = 3
+        d['d'] = 4
+        d['e'] = 5
+    
+    >>> for k,v in d.items():
+           print k,v
+
+        result:- a 1
+                 b 2
+                 c 3
+                 d 4
+                 e 5
+
+    >>> d1 = {}
+        d1['a'] = 1
+        d1['b'] = 3
+
+        d2 = {}
+        d2['b'] = 3
+        d2['a'] = 1
+
+    >>> print d1 == d2
+
+        result:- True
+
+    But in Ordered Dictionary:-
+
+    >>> d1 = OrderedDict()
+        d1['a'] = 1
+        d1['b'] = 3
+
+        d2 = OrderedDict()
+        d2['b'] = 3
+        d2['a'] = 1
+
+    >>> print d1 == d2
+
+        result:- False                  [Note, False because of the order in which 'a' and 'b' are inserted.]
+
+
+4) namedtuple        [It is anologous to class and its objects]
+
+    >>> t = (1,2,3)
+    >>> t[1]
+
+        result:- 2
+
+    >>> from collections import namedtuple                    [import statement here]
+
+    >>> Dog = namedtuple('Dog','age breed name')
+
+    >>> tommy = Dog(age=3, breed='Lab', name='Tommy')
+
+    >>> tommy.age
+
+        result:- 3
+
+    >>> tommy.breed
+
+        result:- 'Lab'
+
+    >>> tommy[2]
+
+        result:- 'Tommy'
+
+# datetime module :-
+-------------------------------------
+
+    >>> import datetime                     [import statement here]
+
+Let's start with time:-
+
+    >>> t = datetime.time(6,23,12)      [format hr,min,sec,micsec]
+    >>> print t
+
+    result:- 06:23:12
+
+    >>> t.minute
+
+    result:- 23
+
+    >>> t.microsecond
+
+    result:- 0
+
+    >>> print datetime.time.min             [For finding minimum time]
+
+    result:- 00:00:00
+
+    >>> print datetime.time.max             [For finding maximum time]
+
+    result:- 23:59:59.999999
+
+    >>> print datetime.time.resolution
+
+    result:- 0:00:00.000001
+
+Now Let's go for date :- 
+    
+    >>> d = datetime.date.today()
+    >>> print d
+    
+    result:- 2018-07-20
+
+    >>> d.timetuple()
+
+    result:- time.struct_time(tm_year=2018, tm_mon=7, tm_mday=20, tm_hour=0, tm_min=0, tm_sec=0, tm_wday=4, tm_yday=201, tm_isdst=-1)
+
+    >>> d.year
+
+    result:- 2018
+
+    >>> d.day
+
+    result:- 20
+
+    >>> print datetime.date.min                 [For finding minimum date]                
+
+    result:- 0001-01-01
+
+    >>> print datetime.date.max                 [For finding maximum date]
+
+    result:- 9999-12-31
+
+    >>> print datetime.date.resolution
+
+    result:- 1 day, 0:00:00
+ 
+    >>> d1 = datetime.date(2016,4,11)
+    >>> print d1
+
+    result:- 2016-04-11
+
+    >>> d2 = d1.replace(year=2000)
+    >>> print d2
+
+    result:- 2000-04-11
+
+    >>> print d1 - d2
+
+    result:- 5844 days, 0:00:00
+
+# Pyhton Debugger 
+--------------------------------------
+
+    >>> import pdb                              [import statement here]
+
+    >>> x = [1,5,7,4]
+        y = 3
+        z = 8
+
+        result = y+z
+        print result
+
+        pdb.set_trace()               [use this code just above the error line to enter into debugging mode. Then go on searching for variables
+                                      or anything that is causing error. After that use 'q' (without quotes) to get out from that environment]    
+
+        result2 = x+z
+        print result2
